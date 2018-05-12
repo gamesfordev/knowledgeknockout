@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 
-
 @Component({
   selector: 'app-score',
   templateUrl: './score.component.html',

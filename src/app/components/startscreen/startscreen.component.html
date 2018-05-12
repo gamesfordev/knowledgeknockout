@@ -8,6 +8,8 @@
         <div>
         <input id="username" placeholder="Enter your username" (keydown)="startGame($event)" [(ngModel)]="username"/>
           <!--<fa name="arrow-circle-right" id="enter"></fa>-->
+
+          <p class="error text-center" >{{error}}</p>
         </div>
       </div>
     </div>
