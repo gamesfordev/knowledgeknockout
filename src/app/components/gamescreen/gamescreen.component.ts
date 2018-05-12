@@ -126,7 +126,7 @@ export class GamescreenComponent implements OnInit {
     for(let i = 0; i < this.intro.length; i++) {
       setTimeout(() => {
         this.intro[i].action();
-      }, 1000 * (i+1) );
+      }, 1500 * (i+1) );
     }
 
     
