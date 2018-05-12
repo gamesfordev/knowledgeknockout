@@ -11,12 +11,8 @@
   margin-right: 1%;
 }
 
-.cli {
-  width: 800px;
-}
-
 .cli .cli-header {
-  background: #EEF1F5;
+  background: #c2c5ca;
   height: 25px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -68,10 +64,6 @@
 .cli .cli-body {
   background: #353B46;
   padding: 30px;
-  min-height: 50%;
-  min-height: 50vh;
-  max-height: 50%;
-  max-height: 50vh;
   color: #DADFE5;
   font-size: .75em;
   font-weight: 500;
@@ -79,6 +71,11 @@
   border-bottom-right-radius: 4px;
   overflow: auto;
   overflow-y: scroll;
+  height: 40vh;
+}
+
+.dollar{
+  color: #fff;
 }
 
 .cli .cli-body:hover {
