@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-leaderboardscreen',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardscreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  startAgain(): void {
+    this.router.navigateByUrl('/start');
+  }
 
   ngOnInit() {
   }
