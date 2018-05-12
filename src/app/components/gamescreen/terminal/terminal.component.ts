@@ -10,14 +10,19 @@ export class TerminalComponent implements OnInit {
 
   currentInput:string;
   @Output() notify : EventEmitter<string> = new EventEmitter<string>();
+  @Output() notify2 : EventEmitter<void> = new EventEmitter<void>();
   @Input() messages : ErrorMessage[];
 
   constructor() { }
 
 
   sendInput(e:any) {
-    console.log(this.currentInput);
-    this.notify.emit(this.currentInput);
+    if(this.currentInput == 'cls' || this.currentInput == 'clear') {
+      this.notify2.emit();
+    }
+    else {
+      this.notify.emit(this.currentInput);
+    }
     this.currentInput = '';
   }
 

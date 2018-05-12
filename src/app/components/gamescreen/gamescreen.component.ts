@@ -34,12 +34,15 @@ export class GamescreenComponent implements OnInit {
     console.log(this.question);
   }
 
+  clearErrorMessages() : void {
+    this.errormessages = new Array();
+  }
+
   addErrorMessage(error : ErrorMessage) : void {
     this.errormessages.push(error);
   }
 
   processChildInput(input: string): void {
-    console.log(this);
     if(this.question.answer == input) {
       this.score += this.question.points;
     }
