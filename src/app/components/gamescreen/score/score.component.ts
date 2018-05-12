@@ -25,6 +25,8 @@ export class ScoreComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+
+    console.log("score"+this.score)
      this.mins = (Math.floor(this.time / 60)).toString().padStart(2, '0');
      this.secs = (this.time % 60).toString().padStart(2, '0');
   }
