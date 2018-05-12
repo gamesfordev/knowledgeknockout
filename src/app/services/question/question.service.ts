@@ -8,8 +8,17 @@ import { Question } from '../../classes/question';
 export class QuestionService {
   questions: Question[];
 
-  getQuestions() : Question[] {
+  getQuestions(): Question[] {
     return  QUESTIONS;
+  }
+
+  getMax(): number {
+    let max = 0;
+    this.getQuestions().forEach((q) => {
+      max += q.points;
+    });
+
+    return max;
   }
 
   constructor() { }
