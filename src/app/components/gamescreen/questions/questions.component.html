@@ -1,4 +1,5 @@
 <div id="questions">
-
-    <app-question></app-question>
+    <div *ngIf="question">
+        <app-question [question]="question"></app-question>
+    </div>
 </div>
