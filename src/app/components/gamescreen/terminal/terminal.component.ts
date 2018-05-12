@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { ErrorMessage } from '../../../classes/errormessage';
 
 @Component({
   selector: 'app-terminal',
@@ -9,6 +10,7 @@ export class TerminalComponent implements OnInit {
 
   currentInput:string;
   @Output() notify : EventEmitter<string> = new EventEmitter<string>();
+  @Input() messages : ErrorMessage[];
 
   constructor() { }
 

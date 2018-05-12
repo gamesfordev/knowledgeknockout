@@ -6,7 +6,7 @@
       </div>
 
       <div id="terminal" >
-        <app-terminal (notify)="processChildInput($event)"></app-terminal>
+        <app-terminal (notify)="processChildInput($event)" [messages]="errormessages"></app-terminal>
       </div>
     </div>
 

@@ -3,6 +3,7 @@ import { Question } from '../../classes/question';
 import { QuestionService } from '../../services/question/question.service';
 import { ScoreComponent } from '../../components/gamescreen/score/score.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorMessage } from '../../classes/errormessage';
 
 const INTERVAL:number = 1000;
 
@@ -18,7 +19,7 @@ export class GamescreenComponent implements OnInit {
   timer: any;
   score: number = 0;
   timetogo: number = 120;
-
+  errormessages: ErrorMessage[] = new Array();
   
 
   constructor(private questionservice: QuestionService, private router: Router) { 
@@ -33,11 +34,21 @@ export class GamescreenComponent implements OnInit {
     console.log(this.question);
   }
 
+  addErrorMessage(error : ErrorMessage) : void {
+    this.errormessages.push(error);
+  }
+
   processChildInput(input: string): void {
     console.log(this);
     if(this.question.answer == input) {
       this.score += this.question.points;
-      console.log(this.score);
+    }
+    else {
+      this.score -= 1;
+      this.addErrorMessage({
+        type : 'ERROR',
+        content : 'Not found'
+      });
     }
     this.randomQuestion();
   }
