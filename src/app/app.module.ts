@@ -8,6 +8,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { StartscreenComponent } from './components/startscreen/startscreen.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
+import { LeaderboardscreenComponent } from './components/leaderboardscreen/leaderboardscreen.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { GamescreenComponent } from './components/gamescreen/gamescreen.componen
     ResultComponent,
     LeaderboardComponent,
     StartscreenComponent,
-    GamescreenComponent
+    GamescreenComponent,
+    LeaderboardscreenComponent
   ],
   imports: [
     BrowserModule,
