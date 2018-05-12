@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreComponent implements OnInit {
 
+  public time = 0;
+
   constructor() { }
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import { StartscreenComponent } from './components/startscreen/startscreen.compo
 import { AppRoutingModule } from './/app-routing.module';
 import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
 import { LeaderboardscreenComponent } from './components/leaderboardscreen/leaderboardscreen.component';
+import { QuestionComponent } from './components/question/question.component';
 import { ScoreComponent } from './components/gamescreen/score/score.component';
 import { QuestionsComponent } from './components/gamescreen/questions/questions.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
@@ -19,6 +20,7 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     StartscreenComponent,
     GamescreenComponent,
     LeaderboardscreenComponent,
+    QuestionComponent,
     ScoreComponent,
     QuestionsComponent
   ],
