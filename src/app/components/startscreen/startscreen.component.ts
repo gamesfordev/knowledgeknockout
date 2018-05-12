@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorage} from '@ngx-pwa/local-storage';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-startscreen',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartscreenComponent implements OnInit {
 
-  constructor() { }
+  username: string = null;
+  constructor(protected localStorage: LocalStorage,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
+  startGame(event) {
+    if (event.keyCode === 13) {
+      // whatever validation
+      this.localStorage.setItem('currentUser', this.username ).subscribe(() => {
+        this.router.navigateByUrl('/game');
+      });
+    }
+  }
 }

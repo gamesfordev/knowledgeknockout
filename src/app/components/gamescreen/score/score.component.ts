@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {LocalStorage} from '@ngx-pwa/local-storage';
 
 
 @Component({
@@ -8,13 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ScoreComponent implements OnInit {
 
-  @Input() score:number = 0;
+  public time = 0;
+  public user = null;
 
-
-  constructor() { }
+  constructor(protected localStorage: LocalStorage) { }
 
   ngOnInit() {
-    
+    this.localStorage.getItem('currentUser').subscribe((user) => {
+      this.user = user;
+    });
+
   }
 
 }
