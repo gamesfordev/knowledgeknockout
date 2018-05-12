@@ -20,6 +20,7 @@ export class GamescreenComponent implements OnInit {
   score: number = 0;
   timetogo: number = 120;
   errormessages: ErrorMessage[] = new Array();
+  wronngtimes: number = 0;
   
 
   constructor(private questionservice: QuestionService, private router: Router) { 
@@ -45,15 +46,31 @@ export class GamescreenComponent implements OnInit {
   processChildInput(input: string): void {
     if(this.question.answer == input) {
       this.score += this.question.points;
-    }
-    else {
-      this.score -= 1;
+      this.randomQuestion();
+      this.wronngtimes = 0;
       this.addErrorMessage({
-        type : 'ERROR',
-        content : 'Not found'
+        type : 'SUCCESS',
+        content : 'Perfect!! You did it.' 
       });
     }
-    this.randomQuestion();
+    else {
+      if(this.wronngtimes < 3) {
+        this.wronngtimes++;
+        this.addErrorMessage({
+          type : 'ERROR',
+          content : 'The command you entered is incorrect. ' + this.wronngtimes + ' of 3 incorrect tries.' 
+        });
+      }
+      else{
+        this.score -= 1;
+        this.addErrorMessage({
+          type : 'WARNING',
+          content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
+        });
+        this.randomQuestion();
+      }
+    }
+    
   }
 
   ngOnInit() {
