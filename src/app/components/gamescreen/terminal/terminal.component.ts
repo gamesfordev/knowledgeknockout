@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TerminalComponent implements OnInit {
 
+  currentInput:string;
+
   constructor() { }
+
+
+  sendInput(e:any) {
+    console.log(this.currentInput);
+    this.currentInput = '';
+  }
 
   ngOnInit() {
   }

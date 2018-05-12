@@ -3,6 +3,8 @@ import { Question } from '../../classes/question';
 import { QuestionService } from '../../services/question/question.service';
 import { ScoreComponent } from '../../components/gamescreen/score/score.component';
 
+const INTERVAL:number = 5000;
+
 @Component({
   selector: 'app-gamescreen',
   templateUrl: './gamescreen.component.html',
@@ -13,6 +15,9 @@ export class GamescreenComponent implements OnInit {
   questions: Question[];
   question: Question = null;
   timer: any;
+  score: number = 0;
+
+  
 
   constructor(private questionservice: QuestionService) { 
   }
@@ -30,8 +35,9 @@ export class GamescreenComponent implements OnInit {
     this.getQuestions();
     this.timer = setInterval(()=> {
       this.randomQuestion();
+      this.score ++;
     },
-    1000);
+    INTERVAL);
     
   }
 
