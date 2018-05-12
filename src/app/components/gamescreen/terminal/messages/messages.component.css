@@ -4,3 +4,6 @@
 .message b.SUCCESS{
     color: rgb(93, 190, 2);    
 }
+.message b.WARNING{
+    color: rgb(248, 165, 11);    
+}
