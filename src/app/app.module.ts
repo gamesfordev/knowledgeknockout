@@ -5,7 +5,11 @@ import { AppComponent } from './app.component';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { ResultComponent } from './components/result/result.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { StartscreenComponent } from './components/startscreen/startscreen.component';
+import { AppRoutingModule } from './/app-routing.module';
 import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
+import { LeaderboardscreenComponent } from './components/leaderboardscreen/leaderboardscreen.component';
+
 
 @NgModule({
   declarations: [
@@ -13,10 +17,13 @@ import { GamescreenComponent } from './components/gamescreen/gamescreen.componen
     TerminalComponent,
     ResultComponent,
     LeaderboardComponent,
-    GamescreenComponent
+    StartscreenComponent,
+    GamescreenComponent,
+    LeaderboardscreenComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
