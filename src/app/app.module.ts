@@ -9,6 +9,7 @@ import { StartscreenComponent } from './components/startscreen/startscreen.compo
 import { AppRoutingModule } from './/app-routing.module';
 import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
 import { LeaderboardscreenComponent } from './components/leaderboardscreen/leaderboardscreen.component';
+import { QuestionComponent } from './components/question/question.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LeaderboardscreenComponent } from './components/leaderboardscreen/leade
     LeaderboardComponent,
     StartscreenComponent,
     GamescreenComponent,
-    LeaderboardscreenComponent
+    LeaderboardscreenComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,
