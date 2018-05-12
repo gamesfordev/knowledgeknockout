@@ -35,17 +35,22 @@ export class GamescreenComponent implements OnInit {
 
   processChildInput(input: string): void {
     console.log(this);
+    if(this.question.answer == input) {
+      this.score += this.question.points;
+      console.log(this.score);
+    }
     this.randomQuestion();
   }
 
   ngOnInit() {
     this.getQuestions();
+    this.randomQuestion();
     this.timer = setInterval(()=> {
       
       console.log(this.timetogo);
       if(this.timetogo == 0) {
+        clearInterval(this.timer);
         this.router.navigateByUrl('/finish');
-        
       }
       this.timetogo --;
     },
