@@ -13,6 +13,7 @@ import { ScoreComponent } from './components/gamescreen/score/score.component';
 import { QuestionsComponent } from './components/gamescreen/questions/questions.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { MessagesComponent } from './components/gamescreen/terminal/messages/messages.component';
+import { IntrotextComponent } from './components/introtext/introtext.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MessagesComponent } from './components/gamescreen/terminal/messages/mes
     QuestionComponent,
     ScoreComponent,
     QuestionsComponent,
-    MessagesComponent
+    MessagesComponent,
+    IntrotextComponent
   ],
   imports: [
     BrowserModule,

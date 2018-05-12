@@ -1,5 +1,6 @@
 <div id="questions">
-    <div *ngIf="question">
-        <app-question [question]="question"></app-question>
+    <div >
+        <app-question [question]="question" *ngIf="question"></app-question>
+        <app-introtext [text]="introtext" *ngIf="!question"></app-introtext>
     </div>
 </div>

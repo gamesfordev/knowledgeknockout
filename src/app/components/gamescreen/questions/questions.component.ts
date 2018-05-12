@@ -9,6 +9,7 @@ import { Question } from '../../../classes/question';
 export class QuestionsComponent implements OnInit {
 
   @Input() question: Question;
+  @Input() introtext:string;
   
   constructor() { }
 

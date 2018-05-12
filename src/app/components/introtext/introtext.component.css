@@ -1,0 +1,12 @@
+.text {
+    font-size: 28px;
+    padding: 15vh 0px 0px 14px;
+    text-align: center;
+}
+
+.score {
+    font-size: 18px;
+    font-style: italic;
+    text-align: center;
+    color: red;
+}
