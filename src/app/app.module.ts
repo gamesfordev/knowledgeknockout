@@ -5,16 +5,20 @@ import { AppComponent } from './app.component';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { ResultComponent } from './components/result/result.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { StartscreenComponent } from './components/startscreen/startscreen.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     TerminalComponent,
     ResultComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    StartscreenComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
