@@ -9,6 +9,7 @@ import { GamescreenComponent } from './components/gamescreen/gamescreen.componen
 import { LeaderboardscreenComponent } from './components/leaderboardscreen/leaderboardscreen.component';
 import { ScoreComponent } from './components/gamescreen/score/score.component';
 import { QuestionsComponent } from './components/gamescreen/questions/questions.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { QuestionsComponent } from './components/gamescreen/questions/questions.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
