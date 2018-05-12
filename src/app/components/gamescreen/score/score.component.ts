@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {QuestionService} from '../../../services/question/question.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-score',
@@ -20,7 +21,8 @@ export class ScoreComponent implements OnInit, OnChanges {
   public max = 0;
 
   constructor(protected localStorage: LocalStorage,
-              private questionservice: QuestionService
+              private questionservice: QuestionService,
+              private router: Router
               ) { }
 
   ngOnInit() {
@@ -35,6 +37,13 @@ export class ScoreComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.finalScore = (100 - ((this.score / this.max) * 100));
+
+    if (this.finalScore === 0) {
+      setTimeout(() => {
+        this.router.navigateByUrl('/finish');
+      }, 2000);
+
+    }
 
     console.log('score' + (100 - ((this.score / this.max) * 100)));
      this.mins = (Math.floor(this.time / 60)).toString().padStart(2, '0');

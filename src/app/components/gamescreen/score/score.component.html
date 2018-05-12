@@ -4,6 +4,8 @@
   <!--<div id="logo-bg" [ngStyle]="{'background-image': 'url(/assets/img/angular-logo.png)'}">-->
 
   <!--</div>-->
+  <p [ngStyle] ="{'width':'70%','text-align':'center','margin':'0 auto'}">
+    <ngb-progressbar type="info" [value]="(100-finalScore).toFixed(0)" [striped]="true" [showValue]="true"></ngb-progressbar></p>
 </div>
 
 <div id="score">
