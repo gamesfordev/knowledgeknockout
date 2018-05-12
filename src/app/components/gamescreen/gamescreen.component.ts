@@ -21,6 +21,39 @@ export class GamescreenComponent implements OnInit {
   timetogo: number = 120;
   errormessages: ErrorMessage[] = new Array();
   wronngtimes: number = 0;
+  gamestatus: string = 'intro';
+  effect1:string;
+  effect2:string;
+  introtext:string;
+
+  intro:any = [
+    {
+      action : () => {
+        this.introtext = "Enter commands in terminal ⌨";
+        console.log(this.introtext);
+        this.effect1 = 'blink';
+      }
+    },
+    {
+      action : () => {
+        this.introtext = "See your score and time 🔥";
+        this.effect1 = '';
+        this.effect2 = 'blink';
+      }
+    },    
+    {
+      action : () => {
+        this.introtext = "Let's Start";
+        this.effect2 = '';
+      }
+    }
+    ,    
+    {
+      action : () => {
+        this.startGame();
+      }
+    }
+  ];
   
 
   constructor(private questionservice: QuestionService, private router: Router) { 
@@ -54,7 +87,7 @@ export class GamescreenComponent implements OnInit {
       });
     }
     else {
-      if(this.wronngtimes < 3) {
+      if(this.wronngtimes < 2) {
         this.wronngtimes++;
         this.addErrorMessage({
           type : 'ERROR',
@@ -68,16 +101,17 @@ export class GamescreenComponent implements OnInit {
           content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
         });
         this.randomQuestion();
+        this.wronngtimes = 0;
       }
     }
     
   }
 
-  ngOnInit() {
+  startGame(): void {
+    
     this.getQuestions();
     this.randomQuestion();
     this.timer = setInterval(()=> {
-      
       console.log(this.timetogo);
       if(this.timetogo == 0) {
         clearInterval(this.timer);
@@ -86,6 +120,15 @@ export class GamescreenComponent implements OnInit {
       this.timetogo --;
     },
     INTERVAL);
+  }
+
+  ngOnInit() {
+    for(let i = 0; i < this.intro.length; i++) {
+      setTimeout(() => {
+        this.intro[i].action();
+      }, 1000 * (i+1) );
+    }
+
     
   }
 
