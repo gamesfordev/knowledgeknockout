@@ -1,0 +1,16 @@
+#result,#terminal{
+
+}
+
+#result{
+  height: 50vh;
+}
+
+#terminal{
+  height: 50vh;
+  background: #262626;
+}
+
+#leaderboard{
+  height:100vh
+}

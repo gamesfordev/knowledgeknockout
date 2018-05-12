@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { ResultComponent } from './components/result/result.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TerminalComponent,
     ResultComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    GamescreenComponent
   ],
   imports: [
     BrowserModule
