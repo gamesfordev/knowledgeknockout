@@ -1,15 +1,2 @@
-#result,#terminal{
-  border:1px dashed #000;
-}
 
-#result{
-  height: 50vh;
-}
 
-#terminal{
-  height: 50vh;
-}
-
-#leaderboard{
-  height:100vh
-}
