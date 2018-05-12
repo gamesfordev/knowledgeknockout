@@ -9,10 +9,11 @@ import {LocalStorage} from '@ngx-pwa/local-storage';
 export class ScoreComponent implements OnInit, OnChanges {
 
   @Input() time = 0;
+  @Input() score = 0;
+
   private mins = '';
   private secs = '';
   public user = null;
-  public score = '100%';
 
   constructor(protected localStorage: LocalStorage) { }
 

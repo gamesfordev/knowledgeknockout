@@ -62,7 +62,7 @@ export class GamescreenComponent implements OnInit {
         });
       }
       else{
-        this.score -= 1;
+        this.score = this.score > 0 ? (this.score - 1) : this.score;
         this.addErrorMessage({
           type : 'WARNING',
           content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
