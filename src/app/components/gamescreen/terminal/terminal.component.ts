@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-terminal',
@@ -8,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class TerminalComponent implements OnInit {
 
   currentInput:string;
+  @Output() notify : EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
 
   sendInput(e:any) {
     console.log(this.currentInput);
+    this.notify.emit(this.currentInput);
     this.currentInput = '';
   }
 

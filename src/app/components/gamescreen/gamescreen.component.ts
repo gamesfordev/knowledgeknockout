@@ -33,6 +33,11 @@ export class GamescreenComponent implements OnInit {
     console.log(this.question);
   }
 
+  processChildInput(input: string): void {
+    console.log(this);
+    this.randomQuestion();
+  }
+
   ngOnInit() {
     this.getQuestions();
     this.timer = setInterval(()=> {
