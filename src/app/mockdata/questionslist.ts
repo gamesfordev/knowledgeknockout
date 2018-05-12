@@ -10,5 +10,15 @@ export const QUESTIONS : Question[] = [
         question : 'Check whether domain ea.com accessible',
         answer : 'ping ea.com',
         points : 1
+    },
+    {
+        question : 'Run your test.js with node',
+        answer : 'node test.js',
+        points : 1
+    },
+    {
+        question : 'Run your test.js with node',
+        answer : 'node test.js',
+        points : 1
     }
 ]; 

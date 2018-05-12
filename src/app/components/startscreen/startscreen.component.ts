@@ -16,11 +16,14 @@ export class StartscreenComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.localStorage.getItem('currentUser').subscribe((user) => {
+      this.username = user;
+    });
   }
 
   startGame(event) {
     this.error = null;
-    if (event.keyCode === 13) {
+    //if (event.keyCode === 13) {
       if (this.username.length > 4) {
         this.localStorage.setItem('currentUser', this.username).subscribe(() => {
           this.router.navigateByUrl('/game');
@@ -28,6 +31,6 @@ export class StartscreenComponent implements OnInit {
       } else {
         this.error = 'Username should have at least 5 characters ';
       }
-    }
+    //}
   }
 }
