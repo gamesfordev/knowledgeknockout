@@ -6,12 +6,13 @@ import {LocalStorage} from '@ngx-pwa/local-storage';
   templateUrl: './score.component.html',
   styleUrls: ['./score.component.css']
 })
-export class ScoreComponent implements OnInit {
+export class ScoreComponent implements OnInit, OnChanges {
 
   @Input() time = 0;
-  private mins: string = '';
-  private secs: string = '';
+  private mins = '';
+  private secs = '';
   public user = null;
+  public score = '100%';
 
   constructor(protected localStorage: LocalStorage) { }
 
@@ -23,8 +24,8 @@ export class ScoreComponent implements OnInit {
   }
 
   ngOnChanges() {
-     this.mins = (Math.floor(this.time / 60)).toString().padStart(2, "0");
-     this.secs = (this.time % 60).toString().padStart(2, "0");
+     this.mins = (Math.floor(this.time / 60)).toString().padStart(2, '0');
+     this.secs = (this.time % 60).toString().padStart(2, '0');
   }
 
 }

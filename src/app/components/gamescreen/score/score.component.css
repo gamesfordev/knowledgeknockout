@@ -29,3 +29,21 @@
   text-transform: uppercase;
   color: #ffffff;
 }
+
+#original{
+  /*opacity: 0.1;*/
+}
+#shadow{
+  height: 0;
+}
+#logo-bg{
+  width: 200px;
+  margin: 20px auto;
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-position: center;
+  background-size: contain;
+  top:27px;
+  background-repeat: no-repeat;
+}
