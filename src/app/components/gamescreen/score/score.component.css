@@ -1,0 +1,11 @@
+#angula-result-logo img{
+  width: 200px;
+  margin: 20px auto;
+  display: block;
+}
+
+#angula-result-logo{
+  padding: 5px;
+  height: 47vh;
+  margin-top: 20px;
+}
