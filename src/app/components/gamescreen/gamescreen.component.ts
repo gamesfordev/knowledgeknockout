@@ -55,7 +55,7 @@ export class GamescreenComponent implements OnInit {
       });
     }
     else {
-      if(this.wronngtimes < 3) {
+      if(this.wronngtimes < 2) {
         this.wronngtimes++;
         this.addErrorMessage({
           type : 'ERROR',
@@ -69,6 +69,7 @@ export class GamescreenComponent implements OnInit {
           content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
         });
         this.randomQuestion();
+        this.wronngtimes = 0;
       }
     }
     
