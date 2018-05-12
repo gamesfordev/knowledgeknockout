@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScoreupdateService } from '../../../services/scoreupdate/scoreupdate.service';
+
 
 @Component({
   selector: 'app-score',
@@ -8,9 +8,9 @@ import { ScoreupdateService } from '../../../services/scoreupdate/scoreupdate.se
 })
 export class ScoreComponent implements OnInit {
 
-  public score = 0;
 
-  constructor(private scoreupdateservice: ScoreupdateService) { }
+
+  constructor() { }
 
   ngOnInit() {
     
