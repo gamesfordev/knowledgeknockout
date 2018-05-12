@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../classes/question';
 import { QuestionService } from '../../services/question/question.service';
 import { ScoreComponent } from '../../components/gamescreen/score/score.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
-const INTERVAL:number = 5000;
+const INTERVAL:number = 1000;
 
 @Component({
   selector: 'app-gamescreen',
@@ -16,10 +17,11 @@ export class GamescreenComponent implements OnInit {
   question: Question = null;
   timer: any;
   score: number = 0;
+  timetogo: number = 120;
 
   
 
-  constructor(private questionservice: QuestionService) { 
+  constructor(private questionservice: QuestionService, private router: Router) { 
   }
 
   getQuestions() :void {
@@ -34,8 +36,13 @@ export class GamescreenComponent implements OnInit {
   ngOnInit() {
     this.getQuestions();
     this.timer = setInterval(()=> {
-      this.randomQuestion();
-      this.score ++;
+      
+      console.log(this.timetogo);
+      if(this.timetogo == 0) {
+        this.router.navigateByUrl('/finish');
+        
+      }
+      this.timetogo --;
     },
     INTERVAL);
     
