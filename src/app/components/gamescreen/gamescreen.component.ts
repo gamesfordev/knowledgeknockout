@@ -22,9 +22,10 @@ export class GamescreenComponent implements OnInit {
   errormessages: ErrorMessage[] = new Array();
   wronngtimes: number = 0;
   gamestatus: string = 'intro';
-  effect1:string;
-  effect2:string;
-  introtext:string;
+  effect1: string;
+  effect2: string;
+  introtext: string;
+  
 
   intro:any = [
     {
@@ -64,8 +65,8 @@ export class GamescreenComponent implements OnInit {
   }
 
   randomQuestion(): void {
-    this.question = this.questions[Math.trunc((Math.random() * 10000) % this.questions.length)];
-    console.log(this.question);
+    this.question = this.questions[Math.floor(((Math.random() * 10000000) % this.questions.length))];
+    console.log(this.questions);
   }
 
   clearErrorMessages() : void {
@@ -77,6 +78,12 @@ export class GamescreenComponent implements OnInit {
   }
 
   processChildInput(input: string): void {
+
+    this.addErrorMessage({
+      type : '$',
+      content : input
+    });
+
     if(this.question.answer == input) {
       this.score += this.question.points;
       this.randomQuestion();
@@ -108,12 +115,12 @@ export class GamescreenComponent implements OnInit {
   }
 
   clearHint(): void {
-    if(this.errormessages.length > 10) {
+    /*if(this.errormessages.length > 10) {
       this.addErrorMessage({
         type : 'INFO',
-        content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
+        content : 'I.'
       });
-    }
+    }*/
   }
 
   startGame(): void {
@@ -121,7 +128,6 @@ export class GamescreenComponent implements OnInit {
     this.getQuestions();
     this.randomQuestion();
     this.timer = setInterval(()=> {
-      console.log(this.timetogo);
       if(this.timetogo == 0) {
         clearInterval(this.timer);
         this.router.navigateByUrl('/finish');
