@@ -49,4 +49,12 @@ export class ScoreComponent implements OnInit, OnChanges {
      this.secs = (this.time % 60).toString().padStart(2, '0');
   }
 
+  voteUs(): void {
+    window.open('http://www.angularattack.com/entries/169-nullpointer/vote', '_blank');
+  }
+
+  exitGame(): void {
+    this.router.navigateByUrl('/start');
+  }
+
 }
