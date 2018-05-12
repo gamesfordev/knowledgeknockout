@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../../classes/question';
 import { QuestionService } from '../../services/question/question.service';
+import { ScoreComponent } from '../../components/gamescreen/score/score.component';
 
 @Component({
   selector: 'app-question',
@@ -11,6 +12,7 @@ export class QuestionComponent implements OnInit {
 
   questions: Question[];
   question: Question = null;
+  timer: any;
 
   constructor(private questionservice: QuestionService) { 
   }
@@ -26,10 +28,11 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.getQuestions();
-    setInterval(()=> {
+    this.timer = setInterval(()=> {
       this.randomQuestion();
     },
     1000);
+    
   }
 
 }
