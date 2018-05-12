@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StartscreenComponent implements OnInit {
 
   username: string = null;
+  error: string = null;
   constructor(protected localStorage: LocalStorage,
               private router: Router,
               private route: ActivatedRoute) { }
@@ -18,11 +19,15 @@ export class StartscreenComponent implements OnInit {
   }
 
   startGame(event) {
+    this.error = null;
     if (event.keyCode === 13) {
-      // whatever validation
-      this.localStorage.setItem('currentUser', this.username ).subscribe(() => {
-        this.router.navigateByUrl('/game');
-      });
+      if (this.username.length > 4) {
+        this.localStorage.setItem('currentUser', this.username).subscribe(() => {
+          this.router.navigateByUrl('/game');
+        });
+      } else {
+        this.error = 'Username should have at least 5 characters ';
+      }
     }
   }
 }
