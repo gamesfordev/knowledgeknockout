@@ -107,6 +107,15 @@ export class GamescreenComponent implements OnInit {
     
   }
 
+  clearHint(): void {
+    if(this.errormessages.length > 10) {
+      this.addErrorMessage({
+        type : 'INFO',
+        content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
+      });
+    }
+  }
+
   startGame(): void {
     
     this.getQuestions();
