@@ -31,7 +31,7 @@ export class ScoreComponent implements OnInit, OnChanges {
     });
 
     this.max = this.questionservice.getMax();
-
+    this.finalScore = (100 - ((this.score / this.max) * 100));
 
   }
 
@@ -45,7 +45,6 @@ export class ScoreComponent implements OnInit, OnChanges {
 
     }
 
-    console.log('score' + (100 - ((this.score / this.max) * 100)));
      this.mins = (Math.floor(this.time / 60)).toString().padStart(2, '0');
      this.secs = (this.time % 60).toString().padStart(2, '0');
   }

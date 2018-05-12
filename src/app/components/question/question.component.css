@@ -5,8 +5,11 @@
 }
 
 .score {
+    text-align: center;
+}
+
+.score span {
     font-size: 18px;
     font-style: italic;
-    text-align: center;
     color: red;
 }

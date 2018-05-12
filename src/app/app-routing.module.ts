@@ -7,6 +7,7 @@ import { LeaderboardscreenComponent } from './components/leaderboardscreen/leade
 
 const routes: Routes = [
   {path : 'start', component : StartscreenComponent},
+  {path : '', component : StartscreenComponent},
   {path : 'game', component : GamescreenComponent},
   {path : 'finish', component : LeaderboardscreenComponent}
 ];

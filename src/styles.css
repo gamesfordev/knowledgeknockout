@@ -6,16 +6,16 @@ html, body {
 }
 
 .blink {
-  animation: blink-animation 0.5s steps(5, start) infinite;
-  -webkit-animation: blink-animation 0.5s steps(5, start) infinite;
+  -webkit-animation: fadeinout 0.5s linear forwards;
+  animation: fadeinout 0.5s linear forwards;
 }
-@keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
+
+@-webkit-keyframes fadeinout {
+0% { opacity: 0.3; }
+50% { opacity: 1; }
 }
-@-webkit-keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
+
+@keyframes fadeinout {
+0% { opacity: 0.3; }
+50% { opacity: 1; }
 }

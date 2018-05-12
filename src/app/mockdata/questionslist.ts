@@ -17,8 +17,8 @@ export const QUESTIONS : Question[] = [
         points : 1
     },
     {
-        question : 'Run your test.js with node',
-        answer : 'node test.js',
+        question : 'Create new directory `abc`',
+        answer : 'mkdir abc',
         points : 1
     }
 ]; 
