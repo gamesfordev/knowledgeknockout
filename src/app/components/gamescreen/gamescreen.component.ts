@@ -21,6 +21,7 @@ export class GamescreenComponent implements OnInit {
   timetogo: number = 120;
   errormessages: ErrorMessage[] = new Array();
   wronngtimes: number = 0;
+  gamestatus: string = 'intro';
   
 
   constructor(private questionservice: QuestionService, private router: Router) { 
@@ -77,7 +78,6 @@ export class GamescreenComponent implements OnInit {
     this.getQuestions();
     this.randomQuestion();
     this.timer = setInterval(()=> {
-      
       console.log(this.timetogo);
       if(this.timetogo == 0) {
         clearInterval(this.timer);
