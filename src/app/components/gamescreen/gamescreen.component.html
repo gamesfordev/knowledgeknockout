@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-8">
       <div id="result">
-        <app-questions></app-questions>
+        <app-questions [question]="question" [introtext]="introtext"></app-questions>
       </div>
 
-      <div id="terminal" >
-        <app-terminal></app-terminal>
+      <div id="terminal" class="{{ effect1 }}" >
+        <app-terminal (notify)="processChildInput($event)" (notify2)="clearErrorMessages()" [messages]="errormessages"></app-terminal>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div id="leaderboard">
-        <app-score></app-score>
+    <div class="col-md-4"> 
+      <div id="leaderboard" class="{{ effect2 }}">
+        <app-score [time]="timetogo" [score]="score"></app-score>
       </div>
     </div>
 

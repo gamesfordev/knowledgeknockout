@@ -1,0 +1,49 @@
+#angula-result-logo img{
+  width: 200px;
+  margin: 20px auto;
+  display: block;
+}
+
+#angula-result-logo{
+  padding: 5px;
+  height: 47vh;
+  margin-top: 20px;
+}
+
+
+#current-score{
+
+  text-align: center;
+  font-size: 120px;
+}
+
+#current-time{
+
+  text-align: center;
+  font-size: 50px;
+  padding: 6px 0px;
+}
+
+#user{
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+#original{
+  /*opacity: 0.1;*/
+}
+#shadow{
+  height: 0;
+}
+#logo-bg{
+  width: 200px;
+  margin: 20px auto;
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-position: center;
+  background-size: contain;
+  top:27px;
+  background-repeat: no-repeat;
+}

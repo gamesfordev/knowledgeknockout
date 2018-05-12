@@ -5,10 +5,13 @@
     <a class="dot" href="#"></a>
   </div>
 
-  <div class="cli-body">
+  <div class="cli-body" style="overflow-y: scroll">
+    <div id="messages">
+        <app-messages [messages]="messages"></app-messages>
+    </div>
     <div class="cli-control">
       <span class="dollar left">$</span>
-      <input type="text" class="cli-input right" name="cli-input" autofocus>
+      <input type="text" class="cli-input right" name="cli-input" autofocus (keyup.enter)="sendInput()" [(ngModel)]="currentInput"/>
     </div>
   </div>
 </div>

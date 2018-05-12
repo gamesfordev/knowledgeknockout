@@ -1,3 +1,6 @@
-<p>
-  questions works!
-</p>
+<div id="questions">
+    <div >
+        <app-question [question]="question" *ngIf="question"></app-question>
+        <app-introtext [text]="introtext" *ngIf="!question"></app-introtext>
+    </div>
+</div>

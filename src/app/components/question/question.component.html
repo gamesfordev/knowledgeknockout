@@ -1,3 +1,4 @@
-<p>
-  question works!
-</p>
+<div style="color:white" *ngIf="question">   
+ <div class="text">{{ question.question }}</div>
+ <div class="score">Score : {{ question.points }}</div>
+</div>

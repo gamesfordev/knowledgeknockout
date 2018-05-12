@@ -1,0 +1,48 @@
+#start{
+  width: 50%;
+  height: 70vh;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+}
+
+.col-md-12{
+  height: 100vh;
+}
+
+#logo{
+  width: 150px;
+  margin: 20px auto;
+  display: block;
+}
+
+#title{
+  text-align: center;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+#username{
+  padding: 10px;
+  text-align: center;
+  background: #383434;
+  /* -webkit-appearance: none; */
+  outline: none;
+  border: none;
+  margin: 20px auto;
+  display: block;
+  width: 300px;
+  color: #ccc;
+}
+
+#enter{
+  color: #ccc;
+}
+
+.error{
+  color: #cccccc;
+}

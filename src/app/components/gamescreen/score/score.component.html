@@ -1,3 +1,15 @@
-<p>
-  score works!
-</p>
+<div id="angula-result-logo">
+  <img src="/assets/img/angular-logo.png" id="original"
+       [ngStyle]="{'-webkit-filter': 'grayscale('+finalScore+'%)'}"/>
+  <!--<div id="logo-bg" [ngStyle]="{'background-image': 'url(/assets/img/angular-logo.png)'}">-->
+
+  <!--</div>-->
+  <p [ngStyle] ="{'width':'70%','text-align':'center','margin':'0 auto'}">
+    <ngb-progressbar type="info" [value]="(100-finalScore).toFixed(0)" [striped]="true" [showValue]="true"></ngb-progressbar></p>
+</div>
+
+<div id="score">
+  <h2 id="user">{{user}}</h2>
+  <h3 id="current-time">{{mins}}:{{secs}}</h3>
+  <h2 id="user">Score : {{score}}</h2>
+</div>

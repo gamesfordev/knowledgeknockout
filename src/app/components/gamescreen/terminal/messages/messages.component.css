@@ -1,0 +1,6 @@
+.message b.ERROR{
+    color: #DD333F;    
+}
+.message b.SUCCESS{
+    color: rgb(93, 190, 2);    
+}

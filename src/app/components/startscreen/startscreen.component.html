@@ -2,7 +2,20 @@
   <div class="row">
     <div class="col-md-12">
       <div id="start">
-        <h1>Angula</h1>
+        <img src="/assets/img/angular-logo.png"  id="logo"/>
+        <h1 id="title">Angula</h1>
+
+        <div>
+        <input id="username" placeholder="Enter your username" (keydown.enter)="startGame($event)" [(ngModel)]="username"/>
+          <!--<fa name="arrow-circle-right" id="enter"></fa>-->
+
+          <p class="error text-center" >{{error}}</p>
+
+          <br/>
+          <div class="text-center">
+            <div class="btn btn-success" (click)="startGame($event)">Start Game</div>
+          </div>  
+        </div>
       </div>
     </div>
 
