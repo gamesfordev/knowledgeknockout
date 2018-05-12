@@ -5,8 +5,10 @@
         <img src="/assets/img/angular-logo.png"  id="logo"/>
         <h1 id="title">Angula</h1>
 
-        <input id="username" placeholder="Enter your username">
-
+        <div>
+        <input id="username" placeholder="Enter your username" (keydown)="startGame($event)" [(ngModel)]="username"/>
+          <!--<fa name="arrow-circle-right" id="enter"></fa>-->
+        </div>
       </div>
     </div>
 

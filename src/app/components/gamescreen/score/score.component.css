@@ -9,3 +9,15 @@
   height: 47vh;
   margin-top: 20px;
 }
+
+
+#current-score{
+
+  text-align: center;
+  font-size: 120px;
+}
+#user{
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}

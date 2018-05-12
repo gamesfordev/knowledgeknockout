@@ -11,6 +11,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { ScoreComponent } from './components/gamescreen/score/score.component';
 import { QuestionsComponent } from './components/gamescreen/questions/questions.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
