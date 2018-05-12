@@ -2,26 +2,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TerminalComponent } from './components/terminal/terminal.component';
-import { ResultComponent } from './components/result/result.component';
-import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { TerminalComponent } from './components/gamescreen/terminal/terminal.component';
 import { StartscreenComponent } from './components/startscreen/startscreen.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
 import { LeaderboardscreenComponent } from './components/leaderboardscreen/leaderboardscreen.component';
 import { QuestionComponent } from './components/question/question.component';
+import { ScoreComponent } from './components/gamescreen/score/score.component';
+import { QuestionsComponent } from './components/gamescreen/questions/questions.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TerminalComponent,
-    ResultComponent,
-    LeaderboardComponent,
     StartscreenComponent,
     GamescreenComponent,
     LeaderboardscreenComponent,
     QuestionComponent,
+    ScoreComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
