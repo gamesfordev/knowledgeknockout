@@ -30,8 +30,6 @@ export class ScoreComponent implements OnInit, OnChanges {
       this.user = user;
     });
 
-    this.max = 100//this.questionservice.getMax();
-
     this.finalScore = (100 - ((this.score / this.max) * 100));
 
   }
