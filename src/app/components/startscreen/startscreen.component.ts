@@ -27,6 +27,9 @@ export class StartscreenComponent implements OnInit {
 
 
   ngOnInit() {
+    let m1 = new Image();
+    m1.src = '/assets/img/chalkboard.png';
+
     this.localStorage.getItem('currentUser').subscribe(user => {
       this.savedUser = user;
       this.username = user;
@@ -65,6 +68,7 @@ export class StartscreenComponent implements OnInit {
             this.router.navigateByUrl('/game');
           });
         } else {
+          this.sounds.playWarning();
           this.error = 'Oopss, Username already taken :-(  ';
         }
 
