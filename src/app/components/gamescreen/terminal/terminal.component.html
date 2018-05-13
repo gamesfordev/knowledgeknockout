@@ -11,7 +11,7 @@
     </div>
     <div class="cli-control">
       <span class="dollar left">$</span>
-      <input type="text" class="cli-input right" name="cli-input" autofocus (keyup.enter)="sendInput()" [(ngModel)]="currentInput"/>
+      <input type="text" class="cli-input right" name="cli-input" autofocus (keyup.enter)="sendInput()" [(ngModel)]="currentInput" autocomplete="off" spellcheck="false"/>
     </div>
   </div>
 </div>
