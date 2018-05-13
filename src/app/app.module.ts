@@ -15,6 +15,18 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { MessagesComponent } from './components/gamescreen/terminal/messages/messages.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { IntrotextComponent } from './components/introtext/introtext.component';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+
+
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDMMidHRCvtAb25JE-WyAeG0W6PvZmRtNc',
+  authDomain: 'angula-4308e.firebaseapp.com',
+  databaseURL: 'https://angula-4308e.firebaseio.com',
+  projectId: 'angula-4308e',
+  storageBucket: '',
+  messagingSenderId: '536634131867'
+};
 
 
 
@@ -36,7 +48,9 @@ import { IntrotextComponent } from './components/introtext/introtext.component';
     AppRoutingModule,
     AngularFontAwesomeModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

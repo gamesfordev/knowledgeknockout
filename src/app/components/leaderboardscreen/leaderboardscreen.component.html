@@ -1,6 +1,27 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
+        <h1 class="title">Leaderboard</h1>
+        <div id="table-container">
+        <table class="table">
+          <thead>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let v of scores | async;let i = index" [class.selected]="v.user==username">
+            <td>{{i+1}}</td>
+            <td>{{v.user}}
+            <img *ngIf="v.score===100" src="/assets/img/badge.png" class="master-badge">
+            </td>
+            <td>{{v.score}}</td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="col-md-4">
         <div id="start">
           <img src="/assets/img/logo.png"  id="logo"/>
           <div class="text-center">
@@ -9,9 +30,8 @@
           </div>
         </div>
       </div>
-  
-  
+
+
     </div>
-  
+
   </div>
-  
