@@ -13,8 +13,8 @@ export class ScoreComponent implements OnInit, OnChanges {
   @Input() time = 0;
   @Input() score = 0;
 
-  private mins = '';
-  private secs = '';
+  public mins = '';
+  public secs = '';
   public user = null;
 
   public finalScore = 0;
