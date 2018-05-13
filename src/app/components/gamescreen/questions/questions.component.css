@@ -1,7 +1,11 @@
 #questions{
-  background-image: url('/assets/img/chalkboard.png');
+  background-image: url('/assets/img/chalkboard.jpg');
   background-size: 100% 99.2%;
   width: 100%;
   height: 47vh;
   margin-top: 20px;
+}
+
+#questions *{ 
+  user-select: none;
 }

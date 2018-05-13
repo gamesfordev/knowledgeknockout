@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {QuestionService} from '../../../services/question/question.service';
 import {Router} from '@angular/router';
+import { ScoreupdateService } from '../../../services/scoreupdate/scoreupdate.service';
 
 @Component({
   selector: 'app-score',
@@ -18,14 +19,18 @@ export class ScoreComponent implements OnInit, OnChanges {
   public user = null;
 
   public finalScore = 0;
-  public max = 10;
+  public max = 0;
 
   constructor(protected localStorage: LocalStorage,
               private questionservice: QuestionService,
-              private router: Router
+              private router: Router,
+              private scoreupdate: ScoreupdateService
               ) { }
 
   ngOnInit() {
+
+    this.max = this.scoreupdate.MAX_SCORE;
+
     this.localStorage.getItem('currentUser').subscribe((user) => {
       this.user = user;
     });
@@ -36,6 +41,7 @@ export class ScoreComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.finalScore = (100 - ((this.score / this.max) * 100));
+    this.scoreupdate.score = ((this.score / this.max) * 100);
 
     if (this.finalScore <= 0) {
       setTimeout(() => {
