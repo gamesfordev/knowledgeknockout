@@ -13,7 +13,11 @@
           <tr *ngFor="let v of scores | async;let i = index" [class.selected]="v.user==username">
             <td>{{i+1}}</td>
             <td>{{v.user}}
-            <img *ngIf="v.score===100" src="/assets/img/badge.png" class="master-badge">
+            <img *ngIf="(v.score/maxScore * 100) >= 100" src="/assets/img/badge.png" class="master-badge">
+            <span>
+                <span class="badge badge-danger" *ngIf="(v.score/maxScore * 100) >= 100">MasterGeek</span>
+                <span class="badge badge-info" *ngIf="(v.score/maxScore * 100) < 100">{{(v.score/maxScore * 100)}}%</span>
+            </span>
             </td>
             <td>{{v.score}}</td>
           </tr>
@@ -25,6 +29,12 @@
         <div id="start">
           <img src="/assets/img/logo.png"  id="logo"/>
           <div class="text-center">
+            <div *ngIf="score < 100">
+              <p class="normal">Your MasterGeek level is <span>{{score}}%</span></p>
+            </div>
+            <div *ngIf="score >= 100">
+              <p class="master">You are a MasterGeek!</p>
+            </div>
             <br/>
             <div class="btn btn-danger" (click)="startAgain()">Play Again</div>
             <div class="btn btn-info" (click)="voteUs()" style="margin-left: 8px;">Vote Us</div>

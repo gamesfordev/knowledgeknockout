@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {Observable} from 'rxjs';
+import { ScoreupdateService } from '../../services/scoreupdate/scoreupdate.service';
 
 @Component({
   selector: 'app-leaderboardscreen',
@@ -13,15 +14,22 @@ export class LeaderboardscreenComponent implements OnInit {
 
   scores;
   username: string;
+  score;
+  maxScore;
   constructor(private router: Router,
               private af: AngularFireDatabase,
-              private localStorage: LocalStorage) { }
+              private localStorage: LocalStorage,
+              private scoreupdate: ScoreupdateService
+            ) { }
 
   startAgain(): void {
     this.router.navigateByUrl('/start');
   }
 
   ngOnInit() {
+    this.score = this.scoreupdate.score;
+    this.maxScore = this.scoreupdate.MAX_SCORE;
+    
     this.localStorage.getItem('currentUser').subscribe((user) => {
       this.username = user;
     });
@@ -42,7 +50,10 @@ export class LeaderboardscreenComponent implements OnInit {
   }
 
   tweetNow(): void {
-    window.open('https://twitter.com/intent/tweet?text=Knowledge Knockout - Play terminal command challenge game and be a MasterGeek ' + window.location.origin , '_blank');
+    if(this.score >= 100)
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('I got MasterGeek badge on #KnowledgeKnockout ' + window.location.origin) , '_blank');
+    else
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('My MasterGeek level is  ' + this.score + '%25 on #KnowledgeKnockout ' + window.location.origin) , '_blank');
   }
 
 }
