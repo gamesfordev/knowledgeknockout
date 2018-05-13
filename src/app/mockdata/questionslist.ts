@@ -1,26 +1,7 @@
 import {Question} from '../classes/question';
 
 export const QUESTIONS : Question[] = [
-    {
-        question : 'Install Docker on linux using apt',
-        answer : 'sudo apt-get install docker',
-        points : 2
-    },
-    {
-        question : 'Check whether domain ea.com accessible',
-        answer : 'ping ea.com',
-        points : 1
-    },
-    {
-        question : 'Run your test.js with node',
-        answer : 'node test.js',
-        points : 1
-    },
-    {
-        question : 'Create new directory `abc`',
-        answer : 'mkdir abc',
-        points : 1
-    },
+    // isuru
     {
       question : 'Go back to previous directory',
       answer : 'cd ..',
@@ -42,8 +23,34 @@ export const QUESTIONS : Question[] = [
       points : 1
     },
     {
-      question : 'Check your IP address',
-      answer : 'hostname -I',
-      points : 2
-    }
+        question : 'Check your IP address',
+        answer : 'hostname -I',
+        points : 2
+    },
+    // shalitha
+    {
+      question : 'Stage `README.md` on git',
+      answer : 'git add README.md',
+      points : 1
+    },
+    {
+        question : 'Install Docker on linux using apt',
+        answer : 'sudo apt-get install docker',
+        points : 2
+    },
+    {
+        question : 'Check whether domain ea.com accessible',
+        answer : 'ping ea.com',
+        points : 1
+    },
+    {
+        question : 'Run your test.js with node',
+        answer : 'node test.js',
+        points : 1
+    },
+    {
+        question : 'Create new directory `abc`',
+        answer : 'mkdir abc',
+        points : 1
+    },
 ];
