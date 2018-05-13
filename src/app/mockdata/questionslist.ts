@@ -32,11 +32,6 @@ export const QUESTIONS : Question[] = [
       points : 1
     },
     {
-      question : 'Go back to previous directory',
-      answer : 'cd ..',
-      points : 1
-    },
-    {
       question : 'Delete `abc` directory and files in it',
       answer : 'rm -r abc',
       points : 1
