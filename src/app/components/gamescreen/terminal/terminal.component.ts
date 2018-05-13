@@ -1,43 +1,51 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  Input,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { ErrorMessage } from '../../../classes/errormessage';
 import { TerminalhistoryService } from '../../../services/terminalhistory/terminalhistory.service';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.css']
+  styleUrls: ['./terminal.component.css'],
 })
 export class TerminalComponent implements OnInit {
+  @Output() notify2: EventEmitter<void> = new EventEmitter<void>();
 
-  currentInput:string;
-  @Output() notify : EventEmitter<string> = new EventEmitter<string>();
-  @Output() notify2 : EventEmitter<void> = new EventEmitter<void>();
-  @Input() messages : ErrorMessage[];
+  currentInput: string;
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Input() messages: ErrorMessage[];
+  @ViewChild('terminaltext') terminalinput: ElementRef;
+  @ViewChild('terminalbody') terminalbody: ElementRef;
 
-  constructor(private terminalhistory: TerminalhistoryService) { }
-
+  constructor(private terminalhistory: TerminalhistoryService) {}
 
   sendInput() {
     this.terminalhistory.addToHistory(this.currentInput);
-    if(this.currentInput == 'cls' || this.currentInput == 'clear') {
-      this.notify2.emit();
-    }
-    else {
-      this.notify.emit(this.currentInput);
-    }
+    this.notify.emit(this.currentInput);
     this.currentInput = '';
+    setTimeout(() => {
+      this.terminalbody.nativeElement.scrollTop = this.terminalbody.nativeElement.scrollHeight;
+    }, 300);
   }
 
   getFromHistory(event: any) {
-    if(event.key == 'ArrowUp') {
+    if (event.key == 'ArrowUp') {
       this.currentInput = this.terminalhistory.getItem(1);
-    }
-    else {
+    } else {
       this.currentInput = this.terminalhistory.getItem(0);
     }
   }
 
-  ngOnInit() {
+  terminalClick(): void {
+    this.terminalinput.nativeElement.focus();
   }
 
+  ngOnInit() {}
 }

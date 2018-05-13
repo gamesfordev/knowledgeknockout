@@ -53,7 +53,7 @@ export class LeaderboardscreenComponent implements OnInit {
     if(this.score >= 100)
       window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('I got MasterGeek badge on #KnowledgeKnockout ' + window.location.origin) , '_blank');
     else
-      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('My MasterGeek level is  ' + this.score + '%25 on #KnowledgeKnockout ' + window.location.origin) , '_blank');
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('My MasterGeek level is  ' + this.score + '% on #KnowledgeKnockout ' + window.location.origin) , '_blank');
   }
 
 }
