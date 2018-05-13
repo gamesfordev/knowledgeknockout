@@ -14,6 +14,7 @@ export class SoundService {
   private gameOver: HTMLMediaElement;
   private ticking: HTMLMediaElement;
   private submit: HTMLMediaElement;
+  private backgound: HTMLMediaElement;
 
   constructor() {
     this.start = new Audio('assets/sounds/start.ogg');
@@ -24,10 +25,10 @@ export class SoundService {
     this.gameOver = new Audio('assets/sounds/Game-over-sound.mp3');
     this.ticking = new Audio('assets/sounds/ticking.mp3');
     this.submit = new Audio('assets/sounds/add.ogg');
+    this.backgound = new Audio('assets/sounds/background.mp3');
     Object.keys(this).map(prop => {
       this[prop].load();
       this[prop].volume = VOLUME;
-      console.log(this[prop]);
     });
   }
 
@@ -44,6 +45,7 @@ export class SoundService {
   }
 
   playError() {
+    this.error.volume = 0.6;
     return this.error.play();
   }
 
@@ -59,7 +61,20 @@ export class SoundService {
     return this.ticking.play();
   }
 
+  stopTicking() {
+    return this.ticking.pause();
+  }
+
   playSubmit() {
     return this.submit.play();
+  }
+
+  playBackground() {
+    this.backgound.loop = true;
+    return this.backgound.play();
+  }
+
+  stopBackground() {
+    return this.backgound.pause();
   }
 }
