@@ -32,6 +32,18 @@ export class SoundService {
     });
   }
 
+  musicOff() {
+    Object.keys(this).map(prop => {
+      this[prop].volume = 0;
+    });
+  }
+
+  musicOn() {
+    Object.keys(this).map(prop => {
+      this[prop].volume = VOLUME;
+    });
+  }
+
   playStart() {
     return this.start.play();
   }
