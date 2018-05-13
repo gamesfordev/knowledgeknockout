@@ -42,6 +42,14 @@ export class LeaderboardscreenComponent implements OnInit {
 
   }
 
+  voteUs(): void {
+    window.open('http://www.angularattack.com/entries/169-nullpointer/vote', '_blank');
+  }
+
+  tweetNow(): void {
+    window.open('https://twitter.com/intent/tweet?text=Knowledge Knockout - Play terminal command challenge game and be a MasterGeek ' + window.location.origin , '_blank');
+  }
+
 }
 
 export interface Userdata {
