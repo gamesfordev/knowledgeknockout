@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SoundService } from '../../services/sound/sound.service';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {SoundService} from '../../services/sound/sound.service';
+
 
 @Component({
   selector: 'app-startscreen',
@@ -11,26 +13,53 @@ import { SoundService } from '../../services/sound/sound.service';
 export class StartscreenComponent implements OnInit {
   username: string = null;
   error: string = null;
+
+  allusers = [];
+
   constructor(
     protected localStorage: LocalStorage,
     private router: Router,
     private route: ActivatedRoute,
+    private af: AngularFireDatabase,
     private sounds: SoundService
   ) {}
+
 
   ngOnInit() {
     this.localStorage.getItem('currentUser').subscribe(user => {
       this.username = user;
+    });
+
+
+
+
+
+  }
+
+  userExists(func) {
+    this.af.list('score', ref => ref.equalTo(this.username).orderByChild('user')).valueChanges().subscribe((data) => {
+      const exists = data.length > 0 ? true : false;
+      console.log(data.length);
+      func(exists);
     });
   }
 
   startGame(event) {
     this.error = null;
     if (this.username.length > 4) {
-      this.sounds.playStart();
-      this.localStorage.setItem('currentUser', this.username).subscribe(() => {
-        this.router.navigateByUrl('/game');
+      this.userExists((exists) => {
+        if (!exists) {
+          this.sounds.playStart();
+          this.localStorage.setItem('currentUser', this.username).subscribe(() => {
+            this.router.navigateByUrl('/game');
+          });
+        } else {
+          this.error = 'Oopss, Username already taken :-(  ';
+        }
+
       });
+
+
     } else {
       this.sounds.playWarning();
       this.error = 'Username should have at least 5 characters ';
