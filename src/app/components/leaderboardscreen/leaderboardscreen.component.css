@@ -52,3 +52,7 @@ table *{
 .master-badge{
   width: 23px;
 }
+
+tr.selected {
+  background-color: #222222;
+}

@@ -12,6 +12,7 @@ import {Observable} from 'rxjs';
 export class LeaderboardscreenComponent implements OnInit {
 
   scores;
+  username: string;
   constructor(private router: Router,
               private af: AngularFireDatabase,
               private localStorage: LocalStorage) { }
@@ -21,6 +22,10 @@ export class LeaderboardscreenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.localStorage.getItem('currentUser').subscribe((user) => {
+      this.username = user;
+    });
+
     const items = this.af.list('score').valueChanges();
 
     this.scores= items.map(data => {
