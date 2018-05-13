@@ -1,5 +1,7 @@
 # Angularattack2018Nullpointer
 
+![logo](https://github.com/isuruAb/angularattack2018-nullpointer/blob/master/src/assets/img/logo.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
 ## Development server
