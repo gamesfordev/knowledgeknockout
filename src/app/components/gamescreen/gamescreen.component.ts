@@ -85,37 +85,48 @@ export class GamescreenComponent implements OnInit {
 
   processChildInput(input: string): void {
 
-    this.addErrorMessage({
-      type : '$',
-      content : input
-    });
+    switch(input) {
 
-    if (this.question.answer == input) {
-      this.score += this.question.points;
-      this.randomQuestion();
-      this.wronngtimes = 0;
+      case 'clear':
+        this.clearErrorMessages();
+        break;
+      case 'cls':
+        this.clearErrorMessages();
+        break;        
+
+      default:
+
       this.addErrorMessage({
-        type : 'SUCCESS',
-        content : 'Perfect!! You did it.'
+        type : '$',
+        content : input
       });
-    } else {
-      if (this.wronngtimes < 2) {
-        this.wronngtimes++;
-        this.addErrorMessage({
-          type : 'ERROR',
-          content : 'The command you entered is incorrect. ' + this.wronngtimes + ' of 3 incorrect tries.'
-        });
-      } else {
-        this.score = this.score > 0 ? (this.score - 1) : this.score;
-        this.addErrorMessage({
-          type : 'WARNING',
-          content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
-        });
+
+      if (this.question.answer == input) {
+        this.score += this.question.points;
         this.randomQuestion();
         this.wronngtimes = 0;
+        this.addErrorMessage({
+          type : 'SUCCESS',
+          content : 'Perfect!! You did it.'
+        });
+      } else {
+        if (this.wronngtimes < 2) {
+          this.wronngtimes++;
+          this.addErrorMessage({
+            type : 'ERROR',
+            content : 'The command you entered is incorrect. ' + this.wronngtimes + ' of 3 incorrect tries.'
+          });
+        } else {
+          this.score = this.score > 0 ? (this.score - 1) : this.score;
+          this.addErrorMessage({
+            type : 'WARNING',
+            content : 'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.'
+          });
+          this.randomQuestion();
+          this.wronngtimes = 0;
+        }
       }
     }
-
   }
 
   clearHint(): void {
