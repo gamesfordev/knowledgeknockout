@@ -15,3 +15,7 @@
   height:94vh;
   background: #000000;
 }
+
+#leaderboard *{
+  user-select: none;
+}

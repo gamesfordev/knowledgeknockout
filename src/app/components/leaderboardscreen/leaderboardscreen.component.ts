@@ -42,6 +42,10 @@ export class LeaderboardscreenComponent implements OnInit {
 
   }
 
+  voteUs(): void {
+    window.open('http://www.angularattack.com/entries/169-nullpointer/vote', '_blank');
+  }
+
 }
 
 export interface Userdata {
