@@ -53,4 +53,24 @@ export const QUESTIONS : Question[] = [
         answer : 'mkdir abc',
         points : 1
     },
+    {
+        question : 'Serve and open your Angular app',
+        answer : 'ng serve --open',
+        points : 2
+    },
+    {
+        question : 'List items of current directory in a column',
+        answer : 'ls -1',
+        points : 1
+    },
+    {
+        question : 'Install dependencies in package.json',
+        answer : 'npm install',
+        points : 1
+    },
+    {
+        question : 'Rename `a.txt` to `b.txt`',
+        answer : 'mv a.txt b.txt',
+        points : 1
+    },
 ];
