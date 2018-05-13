@@ -101,6 +101,10 @@ export class GamescreenComponent implements OnInit {
     this.errormessages.push(error);
   }
 
+  musicOff() {
+    this.sound.musicOff();
+  }
+
   processChildInput(input: string): void {
     switch (input) {
       case 'clear':
@@ -111,6 +115,12 @@ export class GamescreenComponent implements OnInit {
         break;
       case 'skip':
         this.skipQuestion();
+        break;
+      case 'mof':
+        this.musicOff();
+        break;
+      case 'mon':
+        this.sound.musicOn();
         break;
 
       default:
