@@ -73,6 +73,16 @@ export const QUESTIONS: Question[] = [
     answer: 'mv a.txt b.txt',
     points: 1,
   },
+  {
+    question: 'Install and save expressjs',
+    answer: 'npm install express --save',
+    points: 2,
+  },
+  {
+    question: 'Display first line of `a.txt` using head and cat',
+    answer: 'cat a.txt | head -1',
+    points: 3,
+  },
   // dilantha
   {
     question:
