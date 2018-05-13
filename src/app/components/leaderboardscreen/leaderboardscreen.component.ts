@@ -35,11 +35,6 @@ export class LeaderboardscreenComponent implements OnInit {
       return data
     });
 
-    this.scores.forEach((v)=>{
-      console.log(v)
-    })
-
-
   }
 
 }
