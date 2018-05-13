@@ -46,6 +46,7 @@ table *{
 #table-container{
   padding: 20px;
   min-height: 70vh;
+  max-height: 70vh;
   overflow-y: scroll;
 }
 
@@ -55,4 +56,12 @@ table *{
 
 tr.selected {
   background-color: #222222;
+}
+
+.tb {
+  background-image: url('/assets/img/tweet.png');
+  width: 80px;
+  height: 32px;
+  display: inline-block;
+  cursor: pointer;
 }

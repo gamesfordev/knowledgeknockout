@@ -5,3 +5,7 @@
   height: 47vh;
   margin-top: 20px;
 }
+
+#questions *{ 
+  user-select: none;
+}
