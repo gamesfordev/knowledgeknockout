@@ -46,7 +46,7 @@ export class ScoreComponent implements OnInit, OnChanges {
     if (this.finalScore <= 0) {
       setTimeout(() => {
         this.router.navigateByUrl('/finish');
-      }, 2000);
+      }, 3000);
 
     }
 
