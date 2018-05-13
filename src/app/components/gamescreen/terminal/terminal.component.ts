@@ -8,20 +8,17 @@ import { TerminalhistoryService } from '../../../services/terminalhistory/termin
   styleUrls: ['./terminal.component.css'],
 })
 export class TerminalComponent implements OnInit {
+  @Output() notify2: EventEmitter<void> = new EventEmitter<void>();
+
   currentInput: string;
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-  @Output() notify2: EventEmitter<void> = new EventEmitter<void>();
   @Input() messages: ErrorMessage[];
 
   constructor(private terminalhistory: TerminalhistoryService) {}
 
   sendInput() {
     this.terminalhistory.addToHistory(this.currentInput);
-    if (this.currentInput == 'cls' || this.currentInput == 'clear') {
-      this.notify2.emit();
-    } else {
-      this.notify.emit(this.currentInput);
-    }
+    this.notify.emit(this.currentInput);
     this.currentInput = '';
   }
 

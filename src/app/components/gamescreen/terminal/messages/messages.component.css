@@ -7,4 +7,7 @@
 .message b.WARNING{
     color: rgb(248, 165, 11);    
 }
+.message b.INFO{
+    color: rgb(189, 189, 189);    
+}
 

@@ -28,6 +28,7 @@ export class GamescreenComponent implements OnInit {
   effect2: string;
   introtext: string;
   user: string;
+  skipTimes: number = 0;
 
   intro: any = [
     {
@@ -69,6 +70,22 @@ export class GamescreenComponent implements OnInit {
     this.questions = this.questionservice.getQuestions();
   }
 
+  skipQuestion(): void {
+    if (this.skipTimes == 3) {
+      this.addErrorMessage({
+        type: 'WARNING',
+        content: 'Unable to skip. You have used total 3 of 3 skipping chances.',
+      });
+    } else {
+      this.addErrorMessage({
+        type: 'INFO',
+        content:
+          'You have used total ' + ++this.skipTimes + ' of 3 skipping chances.',
+      });
+      this.randomQuestion();
+    }
+  }
+
   randomQuestion(): void {
     this.question = this.questions[
       Math.floor((Math.random() * 10000000) % this.questions.length)
@@ -85,42 +102,55 @@ export class GamescreenComponent implements OnInit {
   }
 
   processChildInput(input: string): void {
-    this.addErrorMessage({
-      type: '$',
-      content: input,
-    });
+    switch (input) {
+      case 'clear':
+        this.clearErrorMessages();
+        break;
+      case 'cls':
+        this.clearErrorMessages();
+        break;
+      case 'skip':
+        this.skipQuestion();
+        break;
 
-    if (this.question.answer == input) {
-      this.sound.playSuccess();
-      this.score += this.question.points;
-      this.randomQuestion();
-      this.wronngtimes = 0;
-      this.addErrorMessage({
-        type: 'SUCCESS',
-        content: 'Perfect!! You did it.',
-      });
-    } else {
-      if (this.wronngtimes < 2) {
-        this.sound.playError();
-        this.wronngtimes++;
+      default:
         this.addErrorMessage({
-          type: 'ERROR',
-          content:
-            'The command you entered is incorrect. ' +
-            this.wronngtimes +
-            ' of 3 incorrect tries.',
+          type: '$',
+          content: input,
         });
-      } else {
-        this.sound.playWarning();
-        this.score = this.score > 0 ? this.score - 1 : this.score;
-        this.addErrorMessage({
-          type: 'WARNING',
-          content:
-            'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.',
-        });
-        this.randomQuestion();
-        this.wronngtimes = 0;
-      }
+
+        if (this.question.answer == input) {
+          this.sound.playSuccess();
+          this.score += this.question.points;
+          this.randomQuestion();
+          this.wronngtimes = 0;
+          this.addErrorMessage({
+            type: 'SUCCESS',
+            content: 'Perfect!! You did it.',
+          });
+        } else {
+          if (this.wronngtimes < 2) {
+            this.sound.playError();
+            this.wronngtimes++;
+            this.addErrorMessage({
+              type: 'ERROR',
+              content:
+                'The command you entered is incorrect. ' +
+                this.wronngtimes +
+                ' of 3 incorrect tries.',
+            });
+          } else {
+            this.sound.playWarning();
+            this.score = this.score > 0 ? this.score - 1 : this.score;
+            this.addErrorMessage({
+              type: 'WARNING',
+              content:
+                'The command you entered is incorrect. 1 point is reduced due to 3 incorrect tries.',
+            });
+            this.randomQuestion();
+            this.wronngtimes = 0;
+          }
+        }
     }
   }
 
