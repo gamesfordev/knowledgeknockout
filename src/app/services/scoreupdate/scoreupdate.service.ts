@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ScoreupdateService {
 
   public score: number = 0;
-  public MAX_SCORE: number = 20;
+  public MAX_SCORE: number = 15;
 
   constructor() { }
 }
