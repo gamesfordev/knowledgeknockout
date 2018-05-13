@@ -28,6 +28,7 @@ export class GamescreenComponent implements OnInit {
   effect2: string;
   introtext: string;
   user: string;
+  skipTimes: number = 0;
 
   intro: any = [
     {
@@ -70,6 +71,22 @@ export class GamescreenComponent implements OnInit {
     this.questions = this.questionservice.getQuestions();
   }
 
+  skipQuestion(): void {
+    if(this.skipTimes == 3) {
+      this.addErrorMessage({
+        type : 'WARNING',
+        content : 'Unable to skip. You have used total 3 of 3 skipping chances.'
+      });
+    }
+    else{
+      this.addErrorMessage({
+        type : 'INFO',
+        content : 'You have used total ' + (++this.skipTimes) +' of 3 skipping chances.'
+      });
+      this.randomQuestion();
+    }
+  }
+
   randomQuestion(): void {
     this.question = this.questions[Math.floor(((Math.random() * 10000000) % this.questions.length))];
     console.log(this.questions);
@@ -92,7 +109,10 @@ export class GamescreenComponent implements OnInit {
         break;
       case 'cls':
         this.clearErrorMessages();
-        break;        
+        break;    
+      case 'skip':
+        this.skipQuestion();
+        break;       
 
       default:
 
