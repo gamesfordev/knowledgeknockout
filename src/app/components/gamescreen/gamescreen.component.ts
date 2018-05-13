@@ -20,7 +20,7 @@ export class GamescreenComponent implements OnInit {
   question: Question = null;
   timer: any;
   score = 0;
-  timetogo = 120;
+  timetogo = 5;
   errormessages: ErrorMessage[] = new Array();
   wronngtimes = 0;
   gamestatus = 'intro';
@@ -132,7 +132,7 @@ export class GamescreenComponent implements OnInit {
     this.getQuestions();
     this.randomQuestion();
     this.timer = setInterval(() => {
-      if (this.timetogo == 0) {
+      if (this.timetogo == 1) {
         clearInterval(this.timer);
         const userdata = {
           user: this.user,
