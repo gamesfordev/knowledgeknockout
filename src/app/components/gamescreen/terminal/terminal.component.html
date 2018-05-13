@@ -1,17 +1,17 @@
-<div class="cli">
+<div class="cli" (click)="terminalClick()">
   <div class="cli-header">
     <a class="dot" href="#"></a>
     <a class="dot" href="#"></a>
     <a class="dot" href="#"></a>
   </div>
 
-  <div class="cli-body" style="overflow-y: scroll">
+  <div class="cli-body" style="overflow-y: scroll" #terminalbody>
     <div id="messages">
         <app-messages [messages]="messages"></app-messages>
     </div>
     <div class="cli-control">
       <span class="dollar left">$</span>
-      <input type="text" class="cli-input right" name="cli-input" autofocus (keyup.enter)="sendInput()" (keyup.arrowdown)="getFromHistory($event)" (keyup.arrowup)="getFromHistory($event)" [(ngModel)]="currentInput" autocomplete="off" spellcheck="false"/>
+      <input type="text" #terminaltext class="cli-input right" name="cli-input" autofocus (keyup.enter)="sendInput()" (keyup.arrowdown)="getFromHistory($event)" (keyup.arrowup)="getFromHistory($event)" [(ngModel)]="currentInput" autocomplete="off" spellcheck="false"/>
     </div>
   </div>
 </div>
