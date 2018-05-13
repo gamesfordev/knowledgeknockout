@@ -11,13 +11,13 @@ import { LeaderboardscreenComponent } from './components/leaderboardscreen/leade
 import { QuestionComponent } from './components/question/question.component';
 import { ScoreComponent } from './components/gamescreen/score/score.component';
 import { QuestionsComponent } from './components/gamescreen/questions/questions.component';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MessagesComponent } from './components/gamescreen/terminal/messages/messages.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IntrotextComponent } from './components/introtext/introtext.component';
-import {AngularFireModule} from 'angularfire2';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { SoundService } from './services/sound/sound.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDMMidHRCvtAb25JE-WyAeG0W6PvZmRtNc',
@@ -25,10 +25,8 @@ export const firebaseConfig = {
   databaseURL: 'https://angula-4308e.firebaseio.com',
   projectId: 'angula-4308e',
   storageBucket: '',
-  messagingSenderId: '536634131867'
+  messagingSenderId: '536634131867',
 };
-
-
 
 @NgModule({
   declarations: [
@@ -41,7 +39,7 @@ export const firebaseConfig = {
     ScoreComponent,
     QuestionsComponent,
     MessagesComponent,
-    IntrotextComponent
+    IntrotextComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +48,9 @@ export const firebaseConfig = {
     FormsModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [SoundService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
