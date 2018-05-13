@@ -11,7 +11,11 @@
           </thead>
           <tbody>
           <tr *ngFor="let v of scores | async;let i = index">
-            <td>{{i+1}}</td><td>{{v.user}}</td><td>{{v.score}}</td>
+            <td>{{i+1}}</td>
+            <td>{{v.user}}
+            <img *ngIf="v.score===100" src="/assets/img/badge.png" class="master-badge">
+            </td>
+            <td>{{v.score}}</td>
           </tr>
           </tbody>
         </table>
