@@ -20,5 +20,35 @@ export const QUESTIONS : Question[] = [
         question : 'Create new directory `abc`',
         answer : 'mkdir abc',
         points : 1
+    },
+    {
+      question : 'Go back to previous directory',
+      answer : 'cd ..',
+      points : 1
+    },
+    {
+      question : 'remove `abc` directory',
+      answer : 'rmdir abc',
+      points : 1
+    },
+    {
+      question : 'Go back to previous directory',
+      answer : 'cd ..',
+      points : 1
+    },
+    {
+      question : 'Delete `abc` directory and files in it',
+      answer : 'rm -r abc',
+      points : 1
+    },
+    {
+      question : 'Check manual of the `cd` command',
+      answer : 'man cd',
+      points : 1
+    },
+    {
+      question : 'Check your IP address',
+      answer : 'hostname -I',
+      points : 2
     }
-]; 
+];
