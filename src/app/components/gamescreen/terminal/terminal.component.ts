@@ -16,7 +16,7 @@ export class TerminalComponent implements OnInit {
   constructor() { }
 
 
-  sendInput(e:any) {
+  sendInput() {
     if(this.currentInput == 'cls' || this.currentInput == 'clear') {
       this.notify2.emit();
     }
