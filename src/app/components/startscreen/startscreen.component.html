@@ -6,14 +6,15 @@
         <h1 id="title">Angula</h1>
 
         <div>
-        <input id="username" placeholder="Enter your username" (keydown.enter)="startGame($event)" [(ngModel)]="username"/>
+        <input id="username" placeholder="Enter your username" (keydown.enter)="startGame($event)" [(ngModel)]="username" autofocus autocomplete="off"/>
           <!--<fa name="arrow-circle-right" id="enter"></fa>-->
 
           <p class="error text-center" >{{error}}</p>
 
           <br/>
           <div class="text-center">
-            <div class="btn btn-success" (click)="startGame($event)">Start Game</div>
+            <div class="btn btn-danger" (click)="startGame($event)">Start Game</div>
+            <div style="margin-left: 8px;" class="btn btn-info" (click)="voteUs()">Vote us</div>
           </div>  
         </div>
       </div>

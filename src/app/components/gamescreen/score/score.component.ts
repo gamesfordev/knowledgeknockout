@@ -13,8 +13,8 @@ export class ScoreComponent implements OnInit, OnChanges {
   @Input() time = 0;
   @Input() score = 0;
 
-  private mins = '';
-  private secs = '';
+  public mins = '';
+  public secs = '';
   public user = null;
 
   public finalScore = 0;
@@ -47,6 +47,14 @@ export class ScoreComponent implements OnInit, OnChanges {
 
      this.mins = (Math.floor(this.time / 60)).toString().padStart(2, '0');
      this.secs = (this.time % 60).toString().padStart(2, '0');
+  }
+
+  voteUs(): void {
+    window.open('http://www.angularattack.com/entries/169-nullpointer/vote', '_blank');
+  }
+
+  exitGame(): void {
+    this.router.navigateByUrl('/start');
   }
 
 }

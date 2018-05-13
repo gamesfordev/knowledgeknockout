@@ -23,14 +23,16 @@ export class StartscreenComponent implements OnInit {
 
   startGame(event) {
     this.error = null;
-    //if (event.keyCode === 13) {
-      if (this.username.length > 4) {
-        this.localStorage.setItem('currentUser', this.username).subscribe(() => {
-          this.router.navigateByUrl('/game');
-        });
-      } else {
-        this.error = 'Username should have at least 5 characters ';
-      }
-    //}
+    if (this.username.length > 4) {
+      this.localStorage.setItem('currentUser', this.username).subscribe(() => {
+        this.router.navigateByUrl('/game');
+      });
+    } else {
+      this.error = 'Username should have at least 5 characters ';
+    }
+  }
+  
+  voteUs(): void {
+    window.open('http://www.angularattack.com/entries/169-nullpointer/vote', '_blank');
   }
 }
