@@ -13,7 +13,8 @@ import {SoundService} from '../../services/sound/sound.service';
 export class StartscreenComponent implements OnInit {
   username: string = null;
   error: string = null;
-
+  savedUser: string = null;
+  key;
   allusers = [];
 
   constructor(
@@ -27,7 +28,12 @@ export class StartscreenComponent implements OnInit {
 
   ngOnInit() {
     this.localStorage.getItem('currentUser').subscribe(user => {
+      this.savedUser = user;
       this.username = user;
+    });
+
+    this.localStorage.getItem('key').subscribe(key => {
+      this.key = key;
     });
 
 
@@ -37,11 +43,16 @@ export class StartscreenComponent implements OnInit {
   }
 
   userExists(func) {
-    this.af.list('score', ref => ref.equalTo(this.username).orderByChild('user')).valueChanges().subscribe((data) => {
-      const exists = data.length > 0 ? true : false;
-      console.log(data.length);
-      func(exists);
-    });
+    if (this.username !== this.savedUser) {
+      this.af.list('score', ref => ref.equalTo(this.username).orderByChild('user')).valueChanges().subscribe((data) => {
+        const exists = data.length > 0 ? true : false;
+        console.log(data.length);
+        this.localStorage.removeItem('key');
+        func(exists);
+      });
+    } else {
+      func(false);
+    }
   }
 
   startGame(event) {

@@ -20,7 +20,7 @@ export class GamescreenComponent implements OnInit {
   question: Question = null;
   timer: any;
   score = 0;
-  timetogo = 120;
+  timetogo = 10;
   errormessages: ErrorMessage[] = new Array();
   wronngtimes = 0;
   gamestatus = 'intro';
@@ -134,12 +134,26 @@ export class GamescreenComponent implements OnInit {
     this.timer = setInterval(() => {
       if (this.timetogo == 0) {
         clearInterval(this.timer);
-        this.af.list('/score').push({
+        const userdata = {
           user: this.user,
           score: this.score
-        }).then(() => {
-          this.router.navigateByUrl('/finish');
+        };
+
+        this.localStorage.getItem('key').subscribe(key => {
+          if (key) {
+            this.af.list('score').update(key, userdata).then(() => {
+              this.router.navigateByUrl('/finish');
+            });
+          } else {
+            this.af.list('/score').push(userdata).then((data) => {
+              this.localStorage.setItem('key', data.key).subscribe(() => {
+                this.router.navigateByUrl('/finish');
+              });
+            });
+          }
         });
+
+
 
       }
       this.timetogo --;
