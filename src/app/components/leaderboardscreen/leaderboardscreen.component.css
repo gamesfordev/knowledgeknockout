@@ -48,3 +48,7 @@ table *{
   min-height: 70vh;
   overflow-y: scroll;
 }
+
+.master-badge{
+  width: 23px;
+}
