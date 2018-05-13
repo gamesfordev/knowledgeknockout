@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
 import { ErrorMessage } from '../../../classes/errormessage';
 import { TerminalhistoryService } from '../../../services/terminalhistory/terminalhistory.service';
 
@@ -12,6 +12,8 @@ export class TerminalComponent implements OnInit {
   currentInput:string;
   @Output() notify : EventEmitter<string> = new EventEmitter<string>();
   @Input() messages : ErrorMessage[];
+  @ViewChild('terminaltext') terminalinput : ElementRef;
+  @ViewChild('terminalbody') terminalbody : ElementRef;
 
   constructor(private terminalhistory: TerminalhistoryService) { }
 
@@ -20,6 +22,9 @@ export class TerminalComponent implements OnInit {
     this.terminalhistory.addToHistory(this.currentInput);
     this.notify.emit(this.currentInput);
     this.currentInput = '';
+    setTimeout(() => {
+      this.terminalbody.nativeElement.scrollTop = this.terminalbody.nativeElement.scrollHeight;
+    }, 300);
   }
 
   getFromHistory(event: any) {
@@ -31,7 +36,13 @@ export class TerminalComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  terminalClick(): void {
+    this.terminalinput.nativeElement.focus();
   }
+
+  ngOnInit() {
+
+  }
+
 
 }
