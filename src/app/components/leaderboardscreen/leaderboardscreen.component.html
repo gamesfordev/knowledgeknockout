@@ -13,7 +13,11 @@
           <tr *ngFor="let v of scores | async;let i = index" [class.selected]="v.user==username">
             <td>{{i+1}}</td>
             <td>{{v.user}}
-            <img *ngIf="v.score===100" src="/assets/img/badge.png" class="master-badge">
+            <img *ngIf="(v.score/maxScore * 100) >= 100" src="/assets/img/badge.png" class="master-badge">
+            <span>
+                <span class="badge badge-danger" *ngIf="(v.score/maxScore * 100) >= 100">MasterGeek</span>
+                <span class="badge badge-info" *ngIf="(v.score/maxScore * 100) < 100">{{(v.score/maxScore * 100)}}%</span>
+            </span>
             </td>
             <td>{{v.score}}</td>
           </tr>

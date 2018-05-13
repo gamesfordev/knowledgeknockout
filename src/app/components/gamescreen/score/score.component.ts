@@ -19,7 +19,7 @@ export class ScoreComponent implements OnInit, OnChanges {
   public user = null;
 
   public finalScore = 0;
-  public max = 10;
+  public max = 0;
 
   constructor(protected localStorage: LocalStorage,
               private questionservice: QuestionService,
@@ -28,6 +28,9 @@ export class ScoreComponent implements OnInit, OnChanges {
               ) { }
 
   ngOnInit() {
+
+    this.max = this.scoreupdate.MAX_SCORE;
+
     this.localStorage.getItem('currentUser').subscribe((user) => {
       this.user = user;
     });

@@ -15,6 +15,7 @@ export class LeaderboardscreenComponent implements OnInit {
   scores;
   username: string;
   score;
+  maxScore;
   constructor(private router: Router,
               private af: AngularFireDatabase,
               private localStorage: LocalStorage,
@@ -27,6 +28,7 @@ export class LeaderboardscreenComponent implements OnInit {
 
   ngOnInit() {
     this.score = this.scoreupdate.score;
+    this.maxScore = this.scoreupdate.MAX_SCORE;
     
     this.localStorage.getItem('currentUser').subscribe((user) => {
       this.username = user;
