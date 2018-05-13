@@ -18,7 +18,7 @@ export class ScoreComponent implements OnInit, OnChanges {
   public user = null;
 
   public finalScore = 0;
-  public max = 0;
+  public max = 10;
 
   constructor(protected localStorage: LocalStorage,
               private questionservice: QuestionService,
@@ -31,6 +31,7 @@ export class ScoreComponent implements OnInit, OnChanges {
     });
 
     this.max = 100//this.questionservice.getMax();
+
     this.finalScore = (100 - ((this.score / this.max) * 100));
 
   }
@@ -38,7 +39,7 @@ export class ScoreComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.finalScore = (100 - ((this.score / this.max) * 100));
 
-    if (this.finalScore === 0) {
+    if (this.finalScore <= 0) {
       setTimeout(() => {
         this.router.navigateByUrl('/finish');
       }, 2000);
