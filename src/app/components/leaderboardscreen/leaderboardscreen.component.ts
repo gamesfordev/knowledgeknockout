@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {Observable} from 'rxjs';
+import { ScoreupdateService } from '../../services/scoreupdate/scoreupdate.service';
 
 @Component({
   selector: 'app-leaderboardscreen',
@@ -13,15 +14,20 @@ export class LeaderboardscreenComponent implements OnInit {
 
   scores;
   username: string;
+  score;
   constructor(private router: Router,
               private af: AngularFireDatabase,
-              private localStorage: LocalStorage) { }
+              private localStorage: LocalStorage,
+              private scoreupdate: ScoreupdateService
+            ) { }
 
   startAgain(): void {
     this.router.navigateByUrl('/start');
   }
 
   ngOnInit() {
+    this.score = this.scoreupdate.score;
+    
     this.localStorage.getItem('currentUser').subscribe((user) => {
       this.username = user;
     });
