@@ -20,7 +20,7 @@ export class GamescreenComponent implements OnInit {
   question: Question = null;
   timer: any;
   score = 0;
-  timetogo = 10;
+  timetogo = 120;
   errormessages: ErrorMessage[] = new Array();
   wronngtimes = 0;
   gamestatus = 'intro';
