@@ -28,7 +28,7 @@ export class StartscreenComponent implements OnInit {
 
   ngOnInit() {
     let m1 = new Image();
-    m1.src = '/assets/img/chalkboard.png';
+    m1.src = '/assets/img/chalkboard.jpg';
 
     this.localStorage.getItem('currentUser').subscribe(user => {
       this.savedUser = user;
