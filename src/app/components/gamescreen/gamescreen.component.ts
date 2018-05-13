@@ -4,8 +4,10 @@ import { QuestionService } from '../../services/question/question.service';
 import { ScoreComponent } from '../../components/gamescreen/score/score.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorMessage } from '../../classes/errormessage';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {LocalStorage} from '@ngx-pwa/local-storage';
 
-const INTERVAL:number = 1000;
+const INTERVAL = 1000;
 
 @Component({
   selector: 'app-gamescreen',
@@ -17,50 +19,54 @@ export class GamescreenComponent implements OnInit {
   questions: Question[];
   question: Question = null;
   timer: any;
-  score: number = 0;
-  timetogo: number = 120;
+  score = 0;
+  timetogo = 120;
   errormessages: ErrorMessage[] = new Array();
-  wronngtimes: number = 0;
-  gamestatus: string = 'intro';
+  wronngtimes = 0;
+  gamestatus = 'intro';
   effect1: string;
   effect2: string;
   introtext: string;
-  
+  user: string;
 
-  intro:any = [
+  intro: any = [
     {
       action : () => {
-        this.introtext = "Enter commands in terminal ⌨";
+        this.introtext = 'Enter commands in terminal ⌨';
         console.log(this.introtext);
         this.effect1 = 'blink';
       }
     },
     {
       action : () => {
-        this.introtext = "See your score and time 🔥";
+        this.introtext = 'See your score and time 🔥';
         this.effect1 = '';
         this.effect2 = 'blink';
       }
-    },    
+    },
     {
       action : () => {
-        this.introtext = "Let's Start";
+        this.introtext = 'Let\'s Start';
         this.effect2 = '';
       }
     }
-    ,    
+    ,
     {
       action : () => {
         this.startGame();
       }
     }
   ];
-  
 
-  constructor(private questionservice: QuestionService, private router: Router) { 
+
+  constructor(private questionservice: QuestionService,
+              private router: Router,
+              private af: AngularFireDatabase,
+              private localStorage: LocalStorage,
+              ) {
   }
 
-  getQuestions() :void {
+  getQuestions(): void {
     this.questions = this.questionservice.getQuestions();
   }
 
@@ -69,11 +75,11 @@ export class GamescreenComponent implements OnInit {
     console.log(this.questions);
   }
 
-  clearErrorMessages() : void {
+  clearErrorMessages(): void {
     this.errormessages = new Array();
   }
 
-  addErrorMessage(error : ErrorMessage) : void {
+  addErrorMessage(error: ErrorMessage): void {
     this.errormessages.push(error);
   }
 
@@ -84,24 +90,22 @@ export class GamescreenComponent implements OnInit {
       content : input
     });
 
-    if(this.question.answer == input) {
+    if (this.question.answer == input) {
       this.score += this.question.points;
       this.randomQuestion();
       this.wronngtimes = 0;
       this.addErrorMessage({
         type : 'SUCCESS',
-        content : 'Perfect!! You did it.' 
+        content : 'Perfect!! You did it.'
       });
-    }
-    else {
-      if(this.wronngtimes < 2) {
+    } else {
+      if (this.wronngtimes < 2) {
         this.wronngtimes++;
         this.addErrorMessage({
           type : 'ERROR',
-          content : 'The command you entered is incorrect. ' + this.wronngtimes + ' of 3 incorrect tries.' 
+          content : 'The command you entered is incorrect. ' + this.wronngtimes + ' of 3 incorrect tries.'
         });
-      }
-      else{
+      } else {
         this.score = this.score > 0 ? (this.score - 1) : this.score;
         this.addErrorMessage({
           type : 'WARNING',
@@ -111,7 +115,7 @@ export class GamescreenComponent implements OnInit {
         this.wronngtimes = 0;
       }
     }
-    
+
   }
 
   clearHint(): void {
@@ -124,13 +128,19 @@ export class GamescreenComponent implements OnInit {
   }
 
   startGame(): void {
-    
+
     this.getQuestions();
     this.randomQuestion();
-    this.timer = setInterval(()=> {
-      if(this.timetogo == 0) {
+    this.timer = setInterval(() => {
+      if (this.timetogo == 0) {
         clearInterval(this.timer);
-        this.router.navigateByUrl('/finish');
+        this.af.list('/score').push({
+          user: this.user,
+          score: this.score
+        }).then(() => {
+          this.router.navigateByUrl('/finish');
+        });
+
       }
       this.timetogo --;
     },
@@ -138,13 +148,19 @@ export class GamescreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    for(let i = 0; i < this.intro.length; i++) {
+
+    this.localStorage.getItem('currentUser').subscribe((user) => {
+      this.user = user;
+    });
+
+
+    for (let i = 0; i < this.intro.length; i++) {
       setTimeout(() => {
         this.intro[i].action();
-      }, 1500 * (i+1) );
+      }, 1500 * (i + 1) );
     }
 
-    
+
   }
 
 }
