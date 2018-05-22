@@ -38,3 +38,27 @@ You can also tweet your `MasterGeek` level and invite your friends to take the c
 - `cls` or `clear` : clears the screen
 - `skip` : skip a question
 - `uparrow` and `downarrow` : Command history 
+
+
+## Resources
+
+### Frontend
+- Angular 6.0
+- Bootstrap
+- Font Awesome
+
+### Backend 
+- NodeJs
+- Express
+
+### Database 
+- Firebase
+
+### Sounds
+- Free sound effects
+
+
+## Screencast
+
+[Watch on youtube](https://www.youtube.com/watch?v=QYC78qwgoJs&feature=youtu.be)
+
